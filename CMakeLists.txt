@@ -4,7 +4,6 @@ project(baseconv LANGUAGES C CXX)
 
 set(CMAKE_C_STANDARD 90)
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_BUILD_TYPE Debug)
 
 #
 # Google Test 
