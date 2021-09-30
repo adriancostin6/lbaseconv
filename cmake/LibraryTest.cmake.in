@@ -6,7 +6,6 @@ include_directories("${CMAKE_SOURCE_DIR}/include")
 
 add_executable(testlib
     ${CMAKE_SOURCE_DIR}/test_lib/testlib.c
-    ${CMAKE_SOURCE_DIR}/include/libconvbase/base_convert.h
     )
 
-target_link_libraries(testlib ${CMAKE_SOURCE_DIR}/build/libbaseconv.a -lm)
+target_link_libraries(testlib ${CMAKE_SOURCE_DIR}/build/lbaseconv.a -lm)
