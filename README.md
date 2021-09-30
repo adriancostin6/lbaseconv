@@ -40,4 +40,4 @@ In order to use the library, make sure to provide the path to the include files
 under `lbaseconv/include` and link against the library file found in the build
 directory.
 
-An example CMake configuration is provided under `lbaseconv/cmake/LibraryTest.cmake.in`.
+An example CMake configuration is provided under [lbaseconv/cmake/LibraryTest.cmake.in](cmake/LibraryTest.cmake.in).
