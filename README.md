@@ -1,4 +1,4 @@
-# lbaseconv - library for conversions between different number bases (2, 8, 10, 16)
+# lbaseconv - library for number base conversion
 
 lbaseconv is a simple library, written in C that aims to provide functions for
 converting between different number bases such as binary, octal, decimal and
