@@ -7,6 +7,6 @@
 #ifndef __HEX2OCT_H__
 #define __HEX2OCT_H__
 
-struct String htoo(const char *s);
+struct string_t htoo(const char *s);
 
 #endif /* __HEX2OCT_H__ */

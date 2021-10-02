@@ -15,13 +15,13 @@
 #define BINARY_GROUP_LENGTH_OCT 3
 
 /* converts binary string to octal; returns octal string*/
-String btoo(const char *s)
+string_t btoo(const char *s)
 {
     int i, k, j;
     int prev_in_len ,in_len, out_len;
 
     char *temp; /* temp char array used for input string processing */
-    String result_str; /* output string */
+    string_t result_str; /* output string */
 
     in_len = strlen(s);
 
@@ -44,7 +44,7 @@ String btoo(const char *s)
 
     /* allocate memory for output string*/
     out_len = in_len / BINARY_GROUP_LENGTH_OCT;
-    result_str.data = malloc(out_len * sizeof(char));
+    result_str = string_t_ctor(out_len);
 
     /* iterate over input string and get octal representation for each group of 3 bits */
     k = 0;
@@ -53,9 +53,7 @@ String btoo(const char *s)
         i += 3;
         ++k;
     }
-
     result_str.data[out_len] = '\0'; /* add null termination character */
-    result_str.len = out_len;
 
     free(temp);
 

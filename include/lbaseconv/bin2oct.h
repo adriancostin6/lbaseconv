@@ -7,7 +7,7 @@
 #ifndef __BIN2OCT_H__
 #define __BIN2OCT_H__
 
-struct String btoo(const char *s);
+struct string_t btoo(const char *s);
 int bin2oct(char *in);
 
 #endif /* __BIN2OCT_H__ */

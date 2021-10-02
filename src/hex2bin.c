@@ -14,12 +14,12 @@
 
 #define BINARY_GROUP_LENGTH_HEX 4
 
-String htob(const char *s)
+string_t htob(const char *s)
 {
     int i, k;
     int output_array_len, input_array_len;
     char bits[BINARY_GROUP_LENGTH_HEX];
-    String result_str;
+    string_t result_str;
 
     input_array_len = strlen(s);
 
@@ -31,7 +31,7 @@ String htob(const char *s)
 
     
     output_array_len = BINARY_GROUP_LENGTH_HEX * input_array_len;
-    result_str.data = malloc(output_array_len * sizeof(char));
+    result_str = string_t_ctor(output_array_len);
 
     k = 0;
     while (i < input_array_len) {
@@ -74,9 +74,7 @@ String htob(const char *s)
         }
         ++i;
     }
-
     result_str.data[output_array_len] = '\0'; /* add null termination character */
-    result_str.len = output_array_len;
 
     return result_str;
 }
@@ -100,7 +98,7 @@ void make_binary(int c, char* res)
 }
 
 /* copy source bits into destination, updating destination index */
-void put_binary(String destination, char  *source, int *dest_index)
+void put_binary(string_t destination, char  *source, int *dest_index)
 {
     int i, j;
 

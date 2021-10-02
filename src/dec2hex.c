@@ -11,13 +11,13 @@
 #include "lbaseconv/util/string.h"
 #include "lbaseconv/util/ascii_hex.h"
 
-String dtoh(int decimal)
+string_t dtoh(int decimal)
 {
     int i;
     int copy;
     char *result;
     int remainder;
-    String str;
+    string_t str;
 
     copy = decimal;
 
@@ -60,7 +60,7 @@ void insert_hex_char(char *s, int num, int pos)
         s[pos] = get_ascii_hex(remainder);
 }
 
-ascii_hex_notation get_ascii_hex(int n)
+ascii_hex_t get_ascii_hex(int n)
 {
     switch(n){
         case 10:

@@ -14,17 +14,17 @@
 #include "lbaseconv/util/invert_string.h"
 #include "lbaseconv/bin2hex.h"
 
-String otoh(const char *s)
+string_t otoh(const char *s)
 {
     int decimal;
-    String s_bin, s_hex;
+    string_t s_bin, s_hex;
 
     decimal = otoi(s);
     s_bin = dtob(decimal);
     invert_string(s_bin.data, s_bin.len);
     s_hex = btoh(s_bin.data);
 
-    free(s_bin.data);
+    string_t_dtor(s_bin);
 
     return s_hex;
 }

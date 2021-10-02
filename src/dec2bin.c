@@ -11,13 +11,13 @@
 #include "lbaseconv/util/string.h"
 
 /* converts a string of decimal digits to binary */
-String dtob(int decimal)
+string_t dtob(int decimal)
 {
     int i;
     int copy;
     char *result;
     int remainder;
-    String str;
+    string_t str;
 
     copy = decimal;
 

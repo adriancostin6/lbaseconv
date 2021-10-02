@@ -8,8 +8,8 @@
 #define __HEX2BIN_H__
 
 
-struct String htob(const char *s);
+struct string_t htob(const char *s);
 void make_binary(int c, char *res);
-void put_binary(struct String destination, char *source, int *dest_index);
+void put_binary(struct string_t destination, char *source, int *dest_index);
 
 #endif /* __HEX2BIN_H__ */

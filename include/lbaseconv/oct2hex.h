@@ -13,6 +13,6 @@
 #ifndef __OCT2HEX_H__
 #define __OCT2HEX_H__
 
-struct String otoh(const char *s);
+struct string_t otoh(const char *s);
 
 #endif /* __OCT2HEX_H__ */

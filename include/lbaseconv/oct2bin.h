@@ -8,6 +8,6 @@
 #define __OCT2BIN_H__
 
 
-struct String otob(const char *s);
+struct string_t otob(const char *s);
 
 #endif /* __OCT2BIN_H__ */

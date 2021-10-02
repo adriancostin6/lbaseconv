@@ -12,14 +12,14 @@
 #include "lbaseconv/hex2bin.h"
 #include "lbaseconv/bin2oct.h"
 
-String htoo(const char* s)
+string_t htoo(const char* s)
 {
-    String s_bin, s_oct;
+    string_t s_bin, s_oct;
 
     s_bin = htob(s);
     s_oct = btoo(s_bin.data);
 
-    free(s_bin.data);
+    string_t_dtor(s_bin);
 
     return s_oct;
 }

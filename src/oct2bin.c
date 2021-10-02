@@ -10,10 +10,10 @@
 #include "lbaseconv/oct2dec.h"
 #include "lbaseconv/dec2bin.h"
 
-String otob(const char *s)
+string_t otob(const char *s)
 {
     int decimal;
-    String s_bin;
+    string_t s_bin;
 
     decimal = otoi(s);
     s_bin = dtob(decimal);

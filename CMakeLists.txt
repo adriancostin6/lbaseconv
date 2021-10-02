@@ -4,6 +4,8 @@ project(baseconv LANGUAGES C CXX)
 
 set(CMAKE_C_STANDARD 90)
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_BUILD_TYPE Debug)
+
 
 #
 # Google Test 
@@ -41,6 +43,7 @@ set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/oct2dec.c
     ${CMAKE_SOURCE_DIR}/src/oct2hex.c
     ${CMAKE_SOURCE_DIR}/src/util/invert_string.c
+    ${CMAKE_SOURCE_DIR}/src/util/string.c
     )
 
 add_library(baseconv ${SOURCES})
