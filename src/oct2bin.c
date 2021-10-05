@@ -37,7 +37,7 @@ string_t otob(const char *s, size_t len)
         return s_bin;
     }
 
-    decimal = otoi(s+i, len);
+    decimal = otod(s+i, len);
     s_bin = dtob(decimal);
 
     return s_bin;

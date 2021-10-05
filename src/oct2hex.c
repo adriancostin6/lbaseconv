@@ -40,7 +40,7 @@ string_t otoh(const char *s, size_t len)
         return s_hex;
     }
 
-    dec = otoi(s+i, len);
+    dec = otod(s+i, len);
     if(dec == -1){
         s_hex.data = NULL;
         s_hex.len = 0;

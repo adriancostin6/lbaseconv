@@ -6,7 +6,7 @@
 */
 #include "lbaseconv/bin2oct.h"
 
-#include "lbaseconv/bin2int.h"
+#include "lbaseconv/bin2dec.h"
 #include "lbaseconv/dec2oct.h"
 
 int bin2oct_input_ok(const char *s, size_t len);
@@ -28,7 +28,7 @@ long btoo(const char *s, size_t len)
     if (!bin2oct_input_ok(s+i, len))
         return -1;
 
-    dec = btoi(s+i, len);
+    dec = btod(s+i, len);
     if (dec == -1)
         return -1;
 

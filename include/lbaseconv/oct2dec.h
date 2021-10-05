@@ -14,6 +14,6 @@
 #define __OCT2DEC_H__
 #include <stddef.h>
 
-long otoi(const char *s, size_t len);
+long otod(const char *s, size_t len);
 
 #endif /* __OCT2DEC_H__ */

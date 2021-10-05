@@ -35,7 +35,7 @@ string_t htob(const char *s, size_t len)
         return result;
     }
 
-    dec = htoi(s+i, len);
+    dec = htod(s+i, len);
     if(dec == -1) {
         result.data = NULL;
         result.len = 0;

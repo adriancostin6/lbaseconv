@@ -1,4 +1,4 @@
-#include "lbaseconv/bin2int.h"
+#include "lbaseconv/bin2dec.h"
 #include "lbaseconv/bin2oct.h"
 #include "lbaseconv/bin2hex.h"
 

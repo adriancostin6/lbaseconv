@@ -15,7 +15,7 @@
 int hex2dec_input_ok(const char *s, size_t len);
 
 /* converts a string of hexadecimal digits to decimal*/
-long htoi(const char *s, size_t len)
+long htod(const char *s, size_t len)
 {
     int i;
     int power;

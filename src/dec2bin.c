@@ -11,10 +11,23 @@
 
 #include "lbaseconv/util/string.h"
 
-int dec2bin_input_ok(long decimal);
+int dtob_input_ok(long decimal);
+int dec2bin_input_ok(const char *s, size_t len);
 
 /* converts a string of decimal digits to binary */
-/* TODO - make a frontend to the dtob function, takes a string a input*/
+string_t dec2bin(const char *s, size_t len)
+{
+    string_t result;
+
+    if (!dec2bin_input_ok(s, len)) {
+        result.data = NULL;
+        result.len = 0;
+        return result;
+    }
+
+    result = dtob(atol(s));
+    return result;
+}
 
 /* converts a decimal number to a binary string */
 string_t dtob(long decimal)
@@ -23,9 +36,7 @@ string_t dtob(long decimal)
     long copy;
     string_t result;
 
-    /* TODO - Add support for negative numbers */
-
-    if(!dec2bin_input_ok(decimal)){
+    if(!dtob_input_ok(decimal)){
         result.data = NULL;
         result.len = 0;
         return result;
@@ -64,7 +75,7 @@ void insert_binary_char(char *s, long num, int pos)
     s[pos] = remainder + '0';
 }
 
-int dec2bin_input_ok(long decimal)
+int dtob_input_ok(long decimal)
 {
     if(decimal > pow(2,32))
         return 0;
@@ -72,5 +83,19 @@ int dec2bin_input_ok(long decimal)
     if(decimal < 0)
         return 0;
 
+    return 1;
+}
+
+int dec2bin_input_ok(const char *s, size_t len)
+{
+    int i;
+
+    if (!s || len == 0 || *s == '\0')
+        return 0;
+
+    for (i = 0; s[i] != '\0'; ++i)
+        if(s[i] - '0' > 9 || s[i] - '0' < 0)
+            return 0;
+    
     return 1;
 }

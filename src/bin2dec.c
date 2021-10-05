@@ -4,7 +4,7 @@
  *
  * BSD-2-Clause License
 */
-#include "lbaseconv/bin2int.h"
+#include "lbaseconv/bin2dec.h"
 
 #include <string.h>
 #include <ctype.h>
@@ -12,11 +12,10 @@
 
 #define BIN_PREFIX 2
 
-int bin2int_input_ok(const char *s, size_t len);
+int bin2dec_input_ok(const char *s, size_t len);
 
 /* converts a binary string to decimal; returns integer result */
-/* pass 0 for full string, or len for variable size of  binary strings*/
-long btoi(const char *s, size_t len)
+long btod(const char *s, size_t len)
 {
     int i;
     int power;
@@ -33,7 +32,7 @@ long btoi(const char *s, size_t len)
         power = len - 1;
     }
 
-    if (!bin2int_input_ok(s+i, len))
+    if (!bin2dec_input_ok(s+i, len))
         return -1;
 
     /* calculate decimal value for binary string */
@@ -48,7 +47,7 @@ long btoi(const char *s, size_t len)
     return result;
 }
 
-int bin2int_input_ok(const char *s, size_t len)
+int bin2dec_input_ok(const char *s, size_t len)
 {
     if(len > 32)
         return 0;

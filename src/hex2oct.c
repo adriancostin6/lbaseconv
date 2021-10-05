@@ -30,7 +30,7 @@ long htoo(const char* s, size_t len)
     if(!hex2oct_input_ok(s+i, len))
         return -1;
 
-    dec = htoi(s, len);
+    dec = htod(s, len);
     if(dec == -1)
         return dec;
 

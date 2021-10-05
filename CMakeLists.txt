@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21)
 
 project(baseconv LANGUAGES C CXX)
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 90)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_BUILD_TYPE Debug)
 
@@ -31,7 +31,7 @@ include_directories("${CMAKE_SOURCE_DIR}/include")
 
 set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/bin2hex.c
-    ${CMAKE_SOURCE_DIR}/src/bin2int.c
+    ${CMAKE_SOURCE_DIR}/src/bin2dec.c
     ${CMAKE_SOURCE_DIR}/src/bin2oct.c
     ${CMAKE_SOURCE_DIR}/src/dec2bin.c
     ${CMAKE_SOURCE_DIR}/src/dec2hex.c

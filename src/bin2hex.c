@@ -7,7 +7,7 @@
 #include "lbaseconv/bin2hex.h"
 
 #include "lbaseconv/util/string.h"
-#include "lbaseconv/bin2int.h"
+#include "lbaseconv/bin2dec.h"
 #include "lbaseconv/dec2hex.h"
 
 
@@ -37,7 +37,7 @@ string_t btoh(const char *s, size_t len)
         return result;
     }
 
-    dec = btoi(s+i, len);
+    dec = btod(s+i, len);
     if(dec == -1){
         result.data = NULL;
         result.len = 0;

@@ -13,10 +13,10 @@
 #define OCTAL_PREFIX_NEW 2
 #define OCTAL_PREFIX_OLD 1
 
-int oct2int_input_ok(const char *s, size_t len);
+int oct2dec_input_ok(const char *s, size_t len);
 
 /* converts a string of octal digits to decimal*/
-long otoi(const char *s, size_t len)
+long otod(const char *s, size_t len)
 {
     int i;
     int power;
@@ -37,7 +37,7 @@ long otoi(const char *s, size_t len)
         power = len - 1;
     }
 
-    if(!oct2int_input_ok(s+i, len))
+    if(!oct2dec_input_ok(s+i, len))
         return -1;
 
     result = 0;
@@ -51,7 +51,7 @@ long otoi(const char *s, size_t len)
     return result;
 }
 
-int oct2int_input_ok(const char *s, size_t len)
+int oct2dec_input_ok(const char *s, size_t len)
 {
     int i;
 
