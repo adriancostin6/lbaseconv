@@ -6,8 +6,8 @@
 */
 #ifndef __BIN2OCT_H__
 #define __BIN2OCT_H__
+#include <stddef.h>
 
-struct string_t btoo(const char *s);
-int bin2oct(char *in);
+long btoo(const char *s, size_t len);
 
 #endif /* __BIN2OCT_H__ */

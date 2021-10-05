@@ -7,8 +7,8 @@
 #ifndef __DEC2HEX_H__
 #define __DEC2HEX_H__
 
-struct string_t dtoh(int decimal);
+struct string_t dtoh(long decimal);
 enum ascii_hex_t get_ascii_hex(int n);
-void insert_hex_char(char *s, int num, int pos);
+void insert_hex_char(char *s, long num, int pos);
 
 #endif /* __DEC2HEX_H__ */

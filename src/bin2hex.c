@@ -6,93 +6,59 @@
 */
 #include "lbaseconv/bin2hex.h"
 
-#include <stdlib.h>
-#include <string.h>
-
 #include "lbaseconv/util/string.h"
 #include "lbaseconv/bin2int.h"
+#include "lbaseconv/dec2hex.h"
 
-#define BINARY_GROUP_LENGTH 4
-#define EMPTY_STRING 0
 
-int check_input(const char *s);
+int bin2hex_input_ok(const char *s, size_t len);
 
 /* converts binary string to hex; returns hex value as string*/
-string_t btoh(const char *s)
+string_t btoh(const char *s, size_t len)
 {
-    char hex_lut[] = "0123456789ABCDEF";
+    string_t result;
+    int i;
+    long dec;
 
-    int ret;
-    int i, j, k;
-    int in_len_old, in_len, out_len;
-    int remainder;
-
-    char *temp; /* temp char array used for input string processing */
-    string_t result_str; /* output string */
-
-    ret = check_input(s);
-    if (ret == -1){
-        result_str.data = NULL;
-        result_str.len = EMPTY_STRING;
-        return result_str;
+    if(!s || len == 0 || *s == '\0') {
+        result.data = NULL;
+        result.len = 0;
+        return result;
     }
 
-    in_len = strlen(s);
-
-    /* accounts for prefix */
-    if (s[0] == '0' && (s[1] == 'x' || s[1] == 'X')){
-        in_len -= 2;
+    if (s[0] == '0' && (s[1] == 'b' || s[1] == 'B'))
         i = 2;
-    } else i = 0;
+    else
+        i = 0;
 
-    /* account for unequeal groups of bits; example 11 1111 -> 0011 1111*/
-    remainder = in_len % 4; /* remainder determines the number of leading zeros we need to add*/
-    if(remainder != 0){
-        in_len_old = in_len;
-        while(in_len % 4 != 0) in_len++;
-        /* if we need ot add leading zeros, allocate temp string and add them*/
-        temp = malloc(in_len * sizeof(char));
-        strcpy(temp + in_len - in_len_old, s);
-        for (j = 0; j < in_len - in_len_old; ++j)
-            temp[j] = '0';
-    } else {
-        /* if no leading zeros, create temp string and simply copy */
-        temp = malloc(in_len * sizeof(char));
-        strcpy(temp, s);
+    if (!bin2hex_input_ok(s+i, len)) {
+        result.data = NULL;
+        result.len = 0;
+        return result;
     }
 
-    /* allocate memory for output string*/
-    out_len = in_len / 4;
-    result_str = string_t_ctor(out_len);
-
-    /* iterate over input string and get hex representation for each group of 4 bits */
-    k = 0;
-    while (i < in_len) {
-        result_str.data[k] = get_hex(btoi(temp+i, BINARY_GROUP_LENGTH), hex_lut);
-        i += BINARY_GROUP_LENGTH;
-        ++k;
+    dec = btoi(s+i, len);
+    if(dec == -1){
+        result.data = NULL;
+        result.len = 0;
+        return result;
     }
-    result_str.data[out_len] = '\0'; /* add null termination character */
-
-    free(temp);
-
-    return result_str;
+    result = dtoh(dec);
+    return result;
 }
 
-/* return hex value for input integer */
-char get_hex(int in, char *c) { return c[in]; }
-
-int check_input(const char *s)
+/* check input; return 0 for bad input */
+int bin2hex_input_ok(const char *s, size_t len)
 {
     int i;
-
-    if (!s || !strcmp(s,""))
-        return -1;
 
     for (i = 0; s[i] != '\0'; ++i)
         if (s[i] != '0')
             if(s[i] != '1')
-                return -1;
+                return 0;
 
-    return 0;
+    if(len > 32)
+        return 0;
+
+    return 1;
 }

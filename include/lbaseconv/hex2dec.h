@@ -6,7 +6,8 @@
 */
 #ifndef __HEX2DEC_H__
 #define __HEX2DEC_H__
+#include <stddef.h>
 
-int htoi(const char *s);
+long htoi(const char *s, size_t len);
 
 #endif /* __HEX2DEC_H__ */

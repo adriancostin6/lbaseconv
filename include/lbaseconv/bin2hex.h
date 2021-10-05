@@ -6,8 +6,8 @@
 */
 #ifndef __BIN2HEX_H__
 #define __BIN2HEX_H__
+#include <stddef.h>
 
-struct string_t btoh(const char *s);
-char get_hex(int in, char *c);
+struct string_t btoh(const char *s, size_t len);
 
 #endif /* __BIN2HEX_H__ */

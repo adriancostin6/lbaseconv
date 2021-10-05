@@ -12,15 +12,18 @@
 
 #define HEX_PREFIX 2
 
+int hex2dec_input_ok(const char *s, size_t len);
+
 /* converts a string of hexadecimal digits to decimal*/
-int htoi(const char *s)
+long htoi(const char *s, size_t len)
 {
     int i;
-    int len, result, power;
+    int power;
+    long result;
 
-    len = strlen(s);
+    if (!s || len == 0 || *s == '\0')
+        return -1;
 
-    /* if 0X or 0x is present, update the start index */
     if (s[0] == '0' && (s[1] == 'x' || s[1] == 'X')) {
         i = 2;
         power = len - HEX_PREFIX - 1;
@@ -29,6 +32,9 @@ int htoi(const char *s)
         i = 0;
         power = len - 1;
     }
+
+    if (!hex2dec_input_ok(s+i, len))
+        return -1;
 
     result = 0;
     while (i < len) {
@@ -72,4 +78,45 @@ int htoi(const char *s)
         ++i;
     }
     return result;
+}
+
+int hex2dec_input_ok(const char *s, size_t len)
+{
+    int i;
+
+    /* only convert hex strings that fit inside a long integer */
+    if(len > 8)
+        return 0;
+
+    /* check if input contains a non-hex character */
+    for(i = 0; s[i] != '\0'; ++i)
+        switch(s[i]) {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+            case 'A':
+            case 'B':
+            case 'C':
+            case 'D':
+            case 'E':
+            case 'F':
+            case 'a':
+            case 'b':
+            case 'c':
+            case 'd':
+            case 'e':
+            case 'f':
+                break;
+            default:
+                return 0;
+        }
+
+    return 1;
 }

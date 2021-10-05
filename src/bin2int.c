@@ -12,25 +12,29 @@
 
 #define BIN_PREFIX 2
 
+int bin2int_input_ok(const char *s, size_t len);
+
 /* converts a binary string to decimal; returns integer result */
 /* pass 0 for full string, or len for variable size of  binary strings*/
-int btoi(const char *s, int len)
+long btoi(const char *s, size_t len)
 {
     int i;
-    int result, power;
+    int power;
+    long result;
 
-    if (!len)
-        len = strlen(s);
+    if (!s || len == 0 || *s == '\0')
+        return -1;
 
-    /* take bin prefix into account */
     if (s[0] == '0' && (s[1] == 'b' || s[1] == 'B')) {
         i = 2;
         power = len - BIN_PREFIX - 1;
-    }
-    else {
+    } else {
         i = 0;
         power = len - 1;
     }
+
+    if (!bin2int_input_ok(s+i, len))
+        return -1;
 
     /* calculate decimal value for binary string */
     result = 0;
@@ -42,4 +46,12 @@ int btoi(const char *s, int len)
         ++i;
     }
     return result;
+}
+
+int bin2int_input_ok(const char *s, size_t len)
+{
+    if(len > 32)
+        return 0;
+
+    return 1;
 }

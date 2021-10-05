@@ -7,7 +7,7 @@
 #ifndef __DEC2BIN_H__
 #define __DEC2BIN_H__
 
-struct string_t dtob(int decimal);
-void insert_binary_char(char *s, int num, int pos);
+struct string_t dtob(long decimal);
+void insert_binary_char(char *s, long num, int pos);
 
 #endif /* __DEC2BIN_H__ */

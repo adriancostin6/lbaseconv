@@ -6,10 +6,8 @@
 */
 #ifndef __HEX2BIN_H__
 #define __HEX2BIN_H__
+#include <stddef.h>
 
-
-struct string_t htob(const char *s);
-void make_binary(int c, char *res);
-void put_binary(struct string_t destination, char *source, int *dest_index);
+struct string_t htob(const char *s, size_t len);
 
 #endif /* __HEX2BIN_H__ */

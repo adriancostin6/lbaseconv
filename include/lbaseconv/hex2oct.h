@@ -6,7 +6,8 @@
 */
 #ifndef __HEX2OCT_H__
 #define __HEX2OCT_H__
+#include <stddef.h>
 
-struct string_t htoo(const char *s);
+long htoo(const char *s, size_t len);
 
 #endif /* __HEX2OCT_H__ */

@@ -10,21 +10,57 @@
 
 #include "lbaseconv/util/string.h"
 #include "lbaseconv/oct2dec.h"
-#include "lbaseconv/dec2bin.h"
-#include "lbaseconv/util/invert_string.h"
-#include "lbaseconv/bin2hex.h"
+#include "lbaseconv/dec2hex.h"
 
-string_t otoh(const char *s)
+int oct2hex_input_ok(const char *s, size_t len);
+
+string_t otoh(const char *s, size_t len)
 {
-    int decimal;
-    string_t s_bin, s_hex;
+    int i;
+    long dec;
+    string_t s_hex;
 
-    decimal = otoi(s);
-    s_bin = dtob(decimal);
-    invert_string(s_bin.data, s_bin.len);
-    s_hex = btoh(s_bin.data);
 
-    string_t_dtor(s_bin);
+    if(!s || len == 0 || *s == '\0') {
+        s_hex.data = NULL;
+        s_hex.len = 0;
+        return s_hex;
+    }
 
+    if (s[0] == '0' && (s[1] == 'o' || s[1] == 'O'))
+        i = 2;
+    else if (s[0] == '0')
+        i = 1;
+    else
+        i = 0;
+
+    if (!oct2hex_input_ok(s+i, len)) {
+        s_hex.data = NULL;
+        s_hex.len = 0;
+        return s_hex;
+    }
+
+    dec = otoi(s+i, len);
+    if(dec == -1){
+        s_hex.data = NULL;
+        s_hex.len = 0;
+        return s_hex;
+    }
+
+    s_hex = dtoh(dec);
     return s_hex;
+}
+
+int oct2hex_input_ok(const char *s, size_t len)
+{
+    int i;
+
+    if(len > 10)
+        return 0;
+
+    for(i = 0; s[i] != '\0'; ++i)
+        if(s[i] - '0' > 7)
+            return 0;
+
+    return 1;
 }

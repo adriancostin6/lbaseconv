@@ -13,15 +13,18 @@
 #define OCTAL_PREFIX_NEW 2
 #define OCTAL_PREFIX_OLD 1
 
+int oct2int_input_ok(const char *s, size_t len);
+
 /* converts a string of octal digits to decimal*/
-int otoi(const char *s)
+long otoi(const char *s, size_t len)
 {
     int i;
-    int len, result, power;
+    int power;
+    long result;
 
-    len = strlen(s);
+    if (!s || len == 0 || *s == '\0')
+        return -1;
 
-    /* if 0o or 0O is present, or 0, update the start index */
     if (s[0] == '0' && (s[1] == 'o' || s[1] == 'O')) {
         i = 2;
         power = len - OCTAL_PREFIX_NEW - 1;
@@ -34,6 +37,9 @@ int otoi(const char *s)
         power = len - 1;
     }
 
+    if(!oct2int_input_ok(s+i, len))
+        return -1;
+
     result = 0;
     while (i < len) {
         if(isdigit(s[i])) {
@@ -43,4 +49,18 @@ int otoi(const char *s)
         ++i;
     }
     return result;
+}
+
+int oct2int_input_ok(const char *s, size_t len)
+{
+    int i;
+
+    if(len > 10)
+        return 0;
+
+    for(i = 0; s[i] != '\0'; ++i)
+        if(s[i] - '0' > 7)
+            return 0;
+
+    return 1;
 }

@@ -9,17 +9,73 @@
 #include <stdlib.h>
 
 #include "lbaseconv/util/string.h"
-#include "lbaseconv/hex2bin.h"
-#include "lbaseconv/bin2oct.h"
+#include "lbaseconv/hex2dec.h"
+#include "lbaseconv/dec2oct.h"
 
-string_t htoo(const char* s)
+int hex2oct_input_ok(const char *s, size_t len);
+
+long htoo(const char* s, size_t len)
 {
-    string_t s_bin, s_oct;
+    int i;
+    long dec, oct;
 
-    s_bin = htob(s);
-    s_oct = btoo(s_bin.data);
+    if(!s || len == 0 || *s == '\0')
+        return -1;
 
-    string_t_dtor(s_bin);
+    if (s[0] == '0' && (s[1] == 'x' || s[1] == 'X'))
+        i = 2;
+    else
+        i = 0;
 
-    return s_oct;
+    if(!hex2oct_input_ok(s+i, len))
+        return -1;
+
+    dec = htoi(s, len);
+    if(dec == -1)
+        return dec;
+
+    oct = dtoo(dec);
+
+    return oct;
+}
+
+int hex2oct_input_ok(const char *s, size_t len)
+{
+    int i;
+
+    /* only convert hex strings that fit inside a long integer */
+    if(len > 8)
+        return 0;
+
+    /* check if input contains a non-hex character */
+    for(i = 0; s[i] != '\0'; ++i)
+        switch(s[i]) {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+            case 'A':
+            case 'B':
+            case 'C':
+            case 'D':
+            case 'E':
+            case 'F':
+            case 'a':
+            case 'b':
+            case 'c':
+            case 'd':
+            case 'e':
+            case 'f':
+                break;
+            default:
+                return 0;
+        }
+
+    return 1;
 }

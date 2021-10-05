@@ -10,13 +10,49 @@
 #include "lbaseconv/oct2dec.h"
 #include "lbaseconv/dec2bin.h"
 
-string_t otob(const char *s)
+int oct2bin_input_ok(const char *s, size_t len);
+
+string_t otob(const char *s, size_t len)
 {
-    int decimal;
+    int i;
+    long decimal;
     string_t s_bin;
 
-    decimal = otoi(s);
+    if (!s || len == 0 || *s == '\0') {
+        s_bin.data = NULL;
+        s_bin.len = 0;
+        return s_bin;
+    }
+
+    if (s[0] == '0' && (s[1] == 'o' || s[1] == 'O'))
+        i = 2;
+    else if (s[0] == '0')
+        i = 1;
+    else
+        i = 0;
+
+    if(!oct2bin_input_ok(s+i, len)){
+        s_bin.data = NULL;
+        s_bin.len = 0;
+        return s_bin;
+    }
+
+    decimal = otoi(s+i, len);
     s_bin = dtob(decimal);
 
     return s_bin;
+}
+
+int oct2bin_input_ok(const char *s, size_t len)
+{
+    int i;
+
+    if(len > 10)
+        return 0;
+
+    for(i = 0; s[i] != '\0'; ++i)
+        if(s[i] - '0' > 7)
+            return 0;
+
+    return 1;
 }

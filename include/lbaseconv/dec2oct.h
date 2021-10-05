@@ -7,6 +7,6 @@
 #ifndef __DEC2OCT_H__
 #define __DEC2OCT_H__
 
-int dtoo(int decimal);
+long dtoo(long decimal);
 
 #endif /* __DEC2OCT_H__ */

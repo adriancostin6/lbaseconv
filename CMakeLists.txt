@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21)
 
 project(baseconv LANGUAGES C CXX)
 
-set(CMAKE_C_STANDARD 90)
+set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_BUILD_TYPE Debug)
 
@@ -42,8 +42,9 @@ set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/oct2bin.c
     ${CMAKE_SOURCE_DIR}/src/oct2dec.c
     ${CMAKE_SOURCE_DIR}/src/oct2hex.c
-    ${CMAKE_SOURCE_DIR}/src/util/invert_string.c
     ${CMAKE_SOURCE_DIR}/src/util/string.c
+    ${CMAKE_SOURCE_DIR}/src/util/invert_string.c
     )
 
 add_library(baseconv ${SOURCES})
+target_link_libraries(baseconv m)
