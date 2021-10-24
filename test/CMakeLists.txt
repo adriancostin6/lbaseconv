@@ -15,6 +15,12 @@ foreach(file ${tests})
         ${sources}
         ${file}
         "${PROJECT_SOURCE_DIR}/test/main.cpp")
-    target_link_libraries("${name}_tests" gtest_main ${CMAKE_SOURCE_DIR}/build/libbaseconv.a -lm)
+
+    if(MSVC)
+        target_link_libraries("${name}_tests" gtest_main ${CMAKE_SOURCE_DIR}/build/$<CONFIG>/baseconv.lib)
+    else()
+        target_link_libraries("${name}_tests" gtest_main ${CMAKE_SOURCE_DIR}/build/lib/libbaseconv.a)
+    endif()
+
     add_test(NAME ${name} COMMAND "${name}_tests")
 endforeach()

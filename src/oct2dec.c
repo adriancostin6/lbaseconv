@@ -6,7 +6,6 @@
 */
 #include "lbaseconv/oct2dec.h"
 
-#include <string.h>
 #include <ctype.h>
 #include <math.h>
 
@@ -16,11 +15,11 @@
 int oct2dec_input_ok(const char *s, size_t len);
 
 /* converts a string of octal digits to decimal*/
-long otod(const char *s, size_t len)
+unsigned long otod(const char *s, size_t len)
 {
     int i;
     int power;
-    long result;
+    unsigned long result;
 
     if (!s || len == 0 || *s == '\0')
         return -1;

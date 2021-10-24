@@ -8,7 +8,7 @@
 #define __BIN2INT_H__
 #include <stddef.h>
 
-long btod (const char *s, size_t len);
+unsigned long btod (const char *s, size_t len);
 
 #endif /* __BIN2INT_H__ */
 

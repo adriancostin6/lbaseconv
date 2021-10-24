@@ -8,7 +8,6 @@
 
 #include <stdlib.h>
 
-#include "lbaseconv/util/string.h"
 #include "lbaseconv/oct2dec.h"
 #include "lbaseconv/dec2hex.h"
 
@@ -17,7 +16,7 @@ int oct2hex_input_ok(const char *s, size_t len);
 string_t otoh(const char *s, size_t len)
 {
     int i;
-    long dec;
+    unsigned long dec;
     string_t s_hex;
 
 

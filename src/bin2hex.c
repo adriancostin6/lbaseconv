@@ -6,7 +6,6 @@
 */
 #include "lbaseconv/bin2hex.h"
 
-#include "lbaseconv/util/string.h"
 #include "lbaseconv/bin2dec.h"
 #include "lbaseconv/dec2hex.h"
 
@@ -18,7 +17,7 @@ string_t btoh(const char *s, size_t len)
 {
     string_t result;
     int i;
-    long dec;
+    unsigned long dec;
 
     if(!s || len == 0 || *s == '\0') {
         result.data = NULL;

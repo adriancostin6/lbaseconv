@@ -9,9 +9,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "lbaseconv/util/string.h"
 
-int dtob_input_ok(long decimal);
+int dtob_input_ok(unsigned long decimal);
 int dec2bin_input_ok(const char *s, size_t len);
 
 /* converts a string of decimal digits to binary */
@@ -30,10 +29,10 @@ string_t dec2bin(const char *s, size_t len)
 }
 
 /* converts a decimal number to a binary string */
-string_t dtob(long decimal)
+string_t dtob(unsigned long decimal)
 {
     int i;
-    long copy;
+    unsigned long copy;
     string_t result;
 
     if(!dtob_input_ok(decimal)){
@@ -67,7 +66,7 @@ string_t dtob(long decimal)
 }
 
 /* inserts binary char in string based on value of decimal num */
-void insert_binary_char(char *s, long num, int pos)
+void insert_binary_char(char *s, unsigned long num, int pos)
 {
     int remainder;
 
@@ -75,7 +74,7 @@ void insert_binary_char(char *s, long num, int pos)
     s[pos] = remainder + '0';
 }
 
-int dtob_input_ok(long decimal)
+int dtob_input_ok(unsigned long decimal)
 {
     if(decimal > pow(2,32))
         return 0;

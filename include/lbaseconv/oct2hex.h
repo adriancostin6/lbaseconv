@@ -14,6 +14,8 @@
 #define __OCT2HEX_H__
 #include <stddef.h>
 
-struct string_t otoh(const char *s, size_t len);
+#include "util/string.h"
+
+string_t otoh(const char *s, size_t len);
 
 #endif /* __OCT2HEX_H__ */

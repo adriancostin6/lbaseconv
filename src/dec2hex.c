@@ -9,11 +9,10 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "lbaseconv/util/string.h"
 #include "lbaseconv/util/ascii_hex.h"
 #include "lbaseconv/util/invert_string.h"
 
-int dtoh_input_ok(long decimal);
+int dtoh_input_ok(unsigned long decimal);
 int dec2hex_input_ok(const char *s, size_t len);
 
 string_t dec2hex(const char *s, size_t len)
@@ -30,10 +29,10 @@ string_t dec2hex(const char *s, size_t len)
     return result;
 }
 
-string_t dtoh(long decimal)
+string_t dtoh(unsigned long decimal)
 {
     int i;
-    long copy;
+    unsigned long copy;
     int remainder;
     string_t result;
 
@@ -69,7 +68,7 @@ string_t dtoh(long decimal)
 }
 
 /* inserts char in array based on value of hex num */
-void insert_hex_char(char *s, long num, int pos)
+void insert_hex_char(char *s, unsigned long num, int pos)
 {
     int remainder;
 
@@ -98,7 +97,7 @@ ascii_hex_t get_ascii_hex(int n)
     }
 }
 
-int dtoh_input_ok(long decimal)
+int dtoh_input_ok(unsigned long decimal)
 {
     if(decimal > pow(2,32))
         return 0;

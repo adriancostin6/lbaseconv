@@ -6,7 +6,6 @@
 */
 #include "lbaseconv/oct2bin.h"
 
-#include "lbaseconv/util/string.h"
 #include "lbaseconv/oct2dec.h"
 #include "lbaseconv/dec2bin.h"
 
@@ -15,7 +14,7 @@ int oct2bin_input_ok(const char *s, size_t len);
 string_t otob(const char *s, size_t len)
 {
     int i;
-    long decimal;
+    unsigned long decimal;
     string_t s_bin;
 
     if (!s || len == 0 || *s == '\0') {

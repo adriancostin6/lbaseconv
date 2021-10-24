@@ -6,7 +6,6 @@
 */
 #include "lbaseconv/hex2dec.h"
 
-#include <string.h>
 #include <math.h>
 #include <ctype.h>
 
@@ -15,11 +14,11 @@
 int hex2dec_input_ok(const char *s, size_t len);
 
 /* converts a string of hexadecimal digits to decimal*/
-long htod(const char *s, size_t len)
+unsigned long htod(const char *s, size_t len)
 {
     int i;
     int power;
-    long result;
+    unsigned long result;
 
     if (!s || len == 0 || *s == '\0')
         return -1;
