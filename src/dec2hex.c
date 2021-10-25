@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "lbaseconv/util/ascii_hex.h"
 #include "lbaseconv/util/invert_string.h"
 
 int dtoh_input_ok(unsigned long decimal);
