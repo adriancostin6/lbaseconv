@@ -4,6 +4,12 @@ lbaseconv is a simple library, written in C that aims to provide functions for
 converting between different number bases such as binary, octal, decimal and
 hexadecimal.
 
+The reasoning behind this project is purely educational, as I wanted to learn
+about how I can build, and test a simple library using CMake, Google Test and
+Github Actions.
+
+Feel free to use the code if you find it useful.
+
 ## Getting started
 
 ### Cloning the repository
