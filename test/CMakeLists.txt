@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.1)
 
 include_directories("${PROJECT_SOURCE_DIR}/include")
 
@@ -19,7 +19,7 @@ foreach(file ${tests})
     if(MSVC)
         target_link_libraries("${name}_tests" gtest_main ${CMAKE_SOURCE_DIR}/build/$<CONFIG>/baseconv.lib)
     else()
-        target_link_libraries("${name}_tests" gtest_main ${CMAKE_SOURCE_DIR}/build/lib/libbaseconv.a)
+        target_link_libraries("${name}_tests" gtest_main ${CMAKE_SOURCE_DIR}/build/libbaseconv.a)
     endif()
 
     add_test(NAME ${name} COMMAND "${name}_tests")
