@@ -9,10 +9,11 @@
 #include <stddef.h>
 
 #include "util/string.h"
+#include "util/ascii_hex.h"
 
 string_t dec2hex(const char *s, size_t len);
 string_t dtoh(unsigned long decimal);
-enum ascii_hex_t get_ascii_hex(int n);
+ascii_hex_t get_ascii_hex(int n);
 void insert_hex_char(char *s, unsigned long num, int pos);
 
 #endif /* __DEC2HEX_H__ */
