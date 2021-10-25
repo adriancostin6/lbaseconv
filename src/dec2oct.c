@@ -10,11 +10,11 @@
 #include <math.h>
 
 int dec2oct_input_ok(const char *s, size_t len);
-int dtoo_input_ok(long decimal);
+int dtoo_input_ok(unsigned long decimal);
 
-long dec2oct(const char *s, size_t len)
+unsigned long dec2oct(const char *s, size_t len)
 {
-    long result;
+    unsigned long result;
 
     if (!dec2oct_input_ok(s, len)){
         return -1;
@@ -25,9 +25,9 @@ long dec2oct(const char *s, size_t len)
 }
 
 /* converts a string of decimal digits to octal*/
-long dtoo(long decimal)
+unsigned long dtoo(unsigned long decimal)
 {
-    long result;
+    unsigned long result;
     int power;
 
     if(!dtoo_input_ok(decimal))
@@ -59,7 +59,7 @@ int dec2oct_input_ok(const char *s, size_t len)
     return 1;
 }
 
-int dtoo_input_ok(long decimal)
+int dtoo_input_ok(unsigned long decimal)
 {
     if(decimal > pow(2,32))
         return 0;

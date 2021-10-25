@@ -12,10 +12,10 @@
 int bin2oct_input_ok(const char *s, size_t len);
 
 /* converts binary string to octal; returns octal string*/
-long btoo(const char *s, size_t len)
+unsigned long btoo(const char *s, size_t len)
 {
     int i;
-    long result, dec;
+    unsigned long result, dec;
 
     if (!s || len == 0 || *s == '\0')
         return -1;

@@ -6,7 +6,7 @@ string_t string_t_ctor(int len)
 {
     string_t s;
 
-    s.data = malloc(len * sizeof(char));
+    s.data = malloc((len+1) * sizeof(char));
     s.len = len;
 
     s.data[len] = '\0';

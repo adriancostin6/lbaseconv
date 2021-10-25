@@ -15,11 +15,11 @@
 int bin2dec_input_ok(const char *s, size_t len);
 
 /* converts a binary string to decimal; returns integer result */
-long btod(const char *s, size_t len)
+unsigned long btod(const char *s, size_t len)
 {
     int i;
     int power;
-    long result;
+    unsigned long result;
 
     if (!s || len == 0 || *s == '\0')
         return -1;

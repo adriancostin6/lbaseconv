@@ -8,16 +8,15 @@
 
 #include <stdlib.h>
 
-#include "lbaseconv/util/string.h"
 #include "lbaseconv/hex2dec.h"
 #include "lbaseconv/dec2oct.h"
 
 int hex2oct_input_ok(const char *s, size_t len);
 
-long htoo(const char* s, size_t len)
+unsigned long htoo(const char* s, size_t len)
 {
     int i;
-    long dec, oct;
+    unsigned long dec, oct;
 
     if(!s || len == 0 || *s == '\0')
         return -1;

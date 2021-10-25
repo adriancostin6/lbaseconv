@@ -8,7 +8,7 @@
 #define __DEC2OCT_H__
 #include <stddef.h>
 
-long dec2oct(const char *s, size_t len);
-long dtoo(long decimal);
+unsigned long dec2oct(const char *s, size_t len);
+unsigned long dtoo(unsigned long decimal);
 
 #endif /* __DEC2OCT_H__ */

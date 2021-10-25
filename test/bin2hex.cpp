@@ -2,7 +2,6 @@
 
 extern "C" {
 #include "lbaseconv/bin2hex.h"
-#include "lbaseconv/util/string.h"
 }
 
 
@@ -11,7 +10,7 @@ TEST(bin2hex, good_input) {
     ASSERT_STREQ(s.data, "C");
 
     string_t_dtor(s);
-}
+ }
 
 // if the input string is uneven, leading zeroes should be added accordingly
 TEST(bin2hex, uneven_input) {

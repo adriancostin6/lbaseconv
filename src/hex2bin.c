@@ -6,7 +6,6 @@
 */
 #include "lbaseconv/hex2bin.h"
 
-#include "lbaseconv/util/string.h"
 #include "lbaseconv/hex2dec.h"
 #include "lbaseconv/dec2bin.h"
 
@@ -15,7 +14,7 @@ int hex2bin_input_ok(const char *s, size_t len);
 string_t htob(const char *s, size_t len)
 {
     int i;
-    long dec;
+    unsigned long dec;
     string_t result;
 
     if (!s || len == 0 || *s == '\0') {
